@@ -41,10 +41,10 @@ namespace Logic {
 	  virtual TaskStatus Execute() {
         if (!running) {
           waitedTime = 0.0;
-          lastTime = Timer::GetTime();
+          lastTime = Timer::GetTime().AsInt64() / 1000.0;
           running = true;
         }
-        double time = Timer::GetTime();
+        double time = Timer::GetTime().AsInt64() / 1000.0;
 		waitedTime += time - lastTime;
         lastTime = time;
         if (waitedTime >= waitTime * 1000) {

@@ -26,11 +26,12 @@ namespace Logic {
 	  LogicModule(BehaviorTree* behavior) { behave = behavior; }
 	  virtual ~LogicModule() {}
 
-	  virtual void Initialize() {}
-	  virtual void Process(const float deltaTime, const float percent) { behave->Execute(); }
-	  virtual void Deinitialize() {}
-	  virtual bool IsTypeOf(const std::type_info& inf) { return false; }
+	  virtual void Handle(InitializeEventArg arg) {}
+	  virtual void Handle(ProcessEventArg arg) {
+          behave->Execute();
+      }
 
+	  virtual void Handle(DeinitializeEventArg arg) {}
   };
 
 }

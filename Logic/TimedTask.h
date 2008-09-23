@@ -39,12 +39,12 @@ namespace Logic {
 	  virtual TaskStatus Execute() {
         if (!running) {
           totalTime = 0.0;
-          lastTime  = Timer::GetTime();
+          lastTime  = Timer::GetTime().AsInt64() / 1000.0;
           running   = true;
           Start();
         }
         
-        double time   = Timer::GetTime();
+        double time   = Timer::GetTime().AsInt64() / 1000.0;
 		double timeDt = time - lastTime;
 		totalTime    += timeDt;
         lastTime      = time;
