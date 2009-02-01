@@ -2,17 +2,20 @@
 #ifndef _CGD_WAYPOINTS_H_
 #define _CGD_WAYPOINTS_H_
 
-#include <Renderers/IRenderNode.h>
 #include <Math/Vector.h>
+#include <Scene/RenderNode.h>
+#include <Renderers/IRenderingView.h>
+
 #include <iostream>
 #include <deque>
 
 using namespace std;
 
+using namespace OpenEngine::Scene;
 using namespace OpenEngine::Renderers;
 using namespace OpenEngine::Math;
 
-class Waypoints : public IRenderNode {
+class Waypoints : public RenderNode {
 private:
     class Waypoint {
     private:
