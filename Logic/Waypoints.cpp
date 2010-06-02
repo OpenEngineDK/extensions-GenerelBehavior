@@ -1,6 +1,8 @@
 
 #include "Waypoints.h"
+#include <stdio.h>
 #include <Meta/OpenGL.h>
+
 using namespace std;
 
 Waypoints::Waypoints() {
@@ -31,7 +33,7 @@ void Waypoints::Load(istream* in) {
 	  cout << "Error accessing waypoint steam!" << endl;
 	  return;
   }
-  
+
   char buf[255];
   int line = 0;
 
@@ -80,8 +82,8 @@ void Waypoints::Apply(IRenderingView* view) {
 
   glLineWidth(2.0);
   glPointSize(10.0);
-  
-  glBegin(GL_LINE_STRIP); 
+
+  glBegin(GL_LINE_STRIP);
   {
     for(unsigned int i = 0; i < waypoints.size(); i++) {
       glColor3f(1.0, 0.0, (float)(i % 2));
@@ -91,9 +93,9 @@ void Waypoints::Apply(IRenderingView* view) {
     }
   }
   glEnd();
-  
+
   glColor3f(0.0, 0.0, 1.0);
-  glBegin(GL_POINTS); 
+  glBegin(GL_POINTS);
   {
     for(unsigned int i = 0; i < waypoints.size(); i++) {
 	  float a[3];
@@ -102,7 +104,7 @@ void Waypoints::Apply(IRenderingView* view) {
     }
   }
   glEnd();
- 
+
   // reset state
   glColor3f(0.0,0.0,0.0);
   glLineWidth(1.0);

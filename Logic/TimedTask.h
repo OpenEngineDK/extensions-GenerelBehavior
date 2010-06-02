@@ -1,10 +1,10 @@
-// 
+//
 // -------------------------------------------------------------------
-// Copyright (C) 2007 OpenEngine.dk (See AUTHORS) 
-// 
-// This program is free software; It is covered by the GNU General 
-// Public License version 2 or any later version. 
-// See the GNU General Public License for more details (see LICENSE). 
+// Copyright (C) 2007 OpenEngine.dk (See AUTHORS)
+//
+// This program is free software; It is covered by the GNU General
+// Public License version 2 or any later version.
+// See the GNU General Public License for more details (see LICENSE).
 //--------------------------------------------------------------------
 
 #ifndef _TIMED_TASK_H_
@@ -43,22 +43,22 @@ namespace Logic {
           running   = true;
           Start();
         }
-        
+
         double time   = Timer::GetTime().AsInt64() / 1000.0;
 		double timeDt = time - lastTime;
 		totalTime    += timeDt;
         lastTime      = time;
-       
+
         TaskStatus status = Execute(timeDt, totalTime);
-        
+
         if (status != TASK_RUNNING) {
 			running = false;
 			End();
 		}
-		
+
 		return status;
 	  }
-	  
+
 	  virtual TaskStatus Execute(double timeDt, double totalTime) = 0;
 	  virtual void Start() {};
 	  virtual void End() {};
